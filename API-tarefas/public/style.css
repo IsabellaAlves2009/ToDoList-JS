@@ -1,0 +1,355 @@
+@import '@hellouxpavel/cssanimation';
+@import '@hellouxpavel/cssanimation/utility';
+@import '@hellouxpavel/cssanimation/letter';
+
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--background-color);
+    
+}
+
+#container{
+
+}
+
+:root {
+    --background-color: #fff;
+    --h1-color: #000;
+    --color-header-border: #a7a5a596;
+    --buttonCreateList-bg-img: linear-gradient(90deg,#4a25af 0%, #2899ce 50%, #05f7ff 100%);
+    --buttonCreateList-hover-active: rgba(67, 231, 173, 0.5);
+    --buttonCreateList-hover-active-border: rgba(45, 161, 120, 0.5);
+    --main-h3-color: gray;
+    --createList-bg: #edebeb;
+    --createList-box-shadow: rgba(0, 0, 0, 0.5);
+    --createList-input-text: #878787;
+    --createList-input-text-bg: transparent;
+    --createList-button-add: #52cafa;
+    --createList-button-add-border: #0285ba;
+    --createList-button-add-text-color: #ebebeb;
+    --createList-button-leave: #ed4242;
+    --createList-button-leave-border: #a62d2d;
+    --createList-button-leave-color: #ebebeb;
+    --list-bg: #fff;
+    --list-text: #000;
+    --list-box-shadow:  0px 15px 30px #c7c7c7;
+    --list-button-check: #1ed760;
+    --list-button-check-text-color: #134533;
+    --list-button-check-hover-active: rgba(30, 215, 96, 0.5);
+    --list-button-delete: #f71e1e;
+    --list-button-delete-hover-active: rgba(247, 30, 30, 0.5);
+}
+
+.dark{
+    --background-color: rgb(2, 4, 27);
+    --h1-color: #fff;
+    --buttonCreateList: #25f5c8;
+    --buttonCreateList-bg-img: linear-gradient(90deg,#4a25af 0%, #2899ce 50%, #05f7ff 100%);
+    --buttonCreateList-hover-active: 0 5px 20px rgba(199, 199, 199, 0.432);
+    --buttonCreateList-hover-active-border: rgba(45, 161, 120, 0.5);
+    --main-h3-color: #c5c8df;
+    --createList-bg: rgb(25, 26, 39);
+    --createList-box-shadow: rgba(0, 0, 0, 0.5);
+    --createList-input-text: rgb(60, 62, 94);
+    --createList-input-text-bg: rgb(14, 15, 29);
+    --createList-button-add: #52cafa;
+    --createList-button-add-border: #0285ba;
+    --createList-button-add-text-color: #ebebeb;
+    --createList-button-leave: #ed4242;
+    --createList-button-leave-border: #a62d2d;
+    --createList-button-leave-color: #ebebeb;
+    --list-bg:rgb(25, 26, 39);
+    --list-text: #ebebeb;
+    --list-box-shadow: 0 0 40px rgb(12, 12, 22);
+    --list-button-check: #1ed760;
+    --list-button-check-text-color: #fff;
+    --list-button-check-hover-active: rgba(30, 215, 96, 0.5);
+    --list-button-delete: #f71e1e;
+    --list-button-delete-hover-active: rgba(247, 30, 30, 0.5);
+}
+
+header{
+    background-color: var(--bg-header);
+    margin: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header div {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+}
+
+body > div::-webkit-scrollbar, header > div::-webkit-scrollbar {
+    display: none;
+}
+
+#deleteAll{
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.7rem;
+    background-color: #fd3a3a;
+    color: #fff;
+}
+
+#checkAll{
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.7rem;
+    background-color: #1ed760;
+    color: #fff;
+}
+
+#mode {
+    background-color: transparent;
+    border: none;
+}
+
+h1{
+    color: var(--h1-color);
+    font-weight: 600;
+}
+
+
+main{
+    display: flex;
+    justify-content: center; /* centraliza horizontal */
+    align-items: center;
+}
+
+main h3{
+    color: var(--main-h3-color);
+    display: block;
+   text-align: center;
+}
+
+main h3 img {
+    color: var(--main-h3-color);
+    width: 1rem;
+    height: 1rem;
+}
+
+.createList{
+    position: fixed;
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    transform: translate(-50%, -50%);
+    top: 50%;        
+    left: 50%; 
+    justify-content: center;
+    background-color: var(--createList-bg);
+    box-shadow: 0px 15px 30px var(--createList-box-shadow);
+    width: 20rem;
+    height: 20rem;
+    border-radius: 1.5rem;
+    z-index: 9999;
+}
+
+.createList input {
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.createList input[type = "text"], #prazoTarefa{
+    background-color: var(--createList-input-text-bg);
+    border: 3px solid var(--createList-input-text);
+    padding: 0.7rem;
+    width: 60%;
+}
+
+
+input:focus {
+    outline: none;
+}
+
+#prazoTarefa{
+   
+}
+
+
+#add{
+    padding: 0.5rem;
+    background-color: var(--createList-button-add);
+    border: 0.2rem solid var(--createList-button-add-border);
+    color: #edebeb;
+}
+
+#buttonCreateList{
+    font-weight: 500;
+    background: var(--buttonCreateList-bg-img);
+    border: none;
+    color: #fff;
+    border-radius: 0.5rem;
+    padding: 0.7rem;
+
+}
+
+#buttonCreateList:hover, #buttonCreateList:active{
+    box-shadow: var(--buttonCreateList-hover-active);
+
+}
+
+.createList div{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.createList div input {
+    width: 50%;
+    font-size: 12px;
+    padding: 8px;
+}
+
+#leave{
+    background-color: var(--createList-button-leave);
+    border: 0.2rem solid var(--createList-button-leave-border);
+    color: #edebeb;
+}
+
+.divList{    
+    align-items: center;
+    justify-content: center;
+    margin: 60px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    gap: 20px;
+}
+
+.list{
+    background-color: var(--list-bg);
+    box-shadow: var(--list-box-shadow);
+    width: 11rem;
+    height: 11rem;
+    border-radius: 0.7rem;
+    overflow: hidden;
+    font-size: 20px;
+    text-align: center;
+}
+
+.list p {
+    color: var(--list-text);
+}
+
+.list div{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 15px;
+}
+
+
+
+.check{
+    background-color: transparent;
+    border:none;
+    color: var(--list-button-check-text-color);
+}
+
+
+.check:active, .delete:active, .delete:hover, .check:hover{
+    border-radius: 50px;
+    background-color: rgba(107, 106, 106, 0.5);
+}
+
+.delete{
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 9999px;
+}
+
+
+
+@media (max-width: 768px) {
+    .divList{
+        grid-template-columns: repeat(3, 2fr);
+        gap: 20px;
+    }
+    .list {
+        width: 9rem;
+        height: 9rem;
+    }
+
+    .data {
+        font-size: 14px;
+    }
+    
+
+    #deleteAll, #checkAll, #buttonCreateList{
+        padding: 0.4rem;
+    }
+
+}
+
+@media (max-width: 400px){
+    .divList{
+        grid-template-columns: repeat(2, 2fr);
+        gap: 20px;
+    }
+    .list {
+        width: 5rem;
+        height: 5rem;
+    }
+
+    h1{
+        font-size: 20px;
+    }
+    .list p {
+        font-size: 13px;
+    }
+    .data {
+        font-size: 14px;
+    }
+    
+    .check img, .delete img{
+        font-size: 12px;
+    }
+
+    #deleteAll, #checkAll, #buttonCreateList{
+        padding: 0.4rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .divList{
+        grid-template-columns: repeat(3, 2fr);
+        gap: 20px;
+    }
+    .list {
+        width: 9rem;
+        height: 9rem;
+    }
+
+    h1{
+        font-size: 20px;
+    }
+    .data {
+        font-size: 14px;
+    }
+    
+    .list p {
+        font-size: 20px;
+    }
+    #deleteAll, #checkAll, #buttonCreateList{
+        padding: 0.4rem;
+    }
+
+}
+
